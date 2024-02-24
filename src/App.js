@@ -4,14 +4,11 @@ import { useEffect, useState } from "react";
 export default function App() {
   const [data, setData] = useState([]);
   useEffect(() => {
-    try {
       fetch("https://restcountries.com/v3.1/all")
         .then((res) => res.json())
-        .then((dta) => setData(dta));
-    } catch (error) {
-      console.error("Unable to fetch data", error);
-    }
-  }, [data]);
+        .then((dta) => setData(dta))
+    .catch ((error) => console.log("Error in fetching data", error));
+  }, []);
 
   return (
     <div className="container">
